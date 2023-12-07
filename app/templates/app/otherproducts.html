@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}
+  Buy Now
+{% endblock %}
+{% block main-content %}
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm-3">
+        <ul>
+            <li><a href="{% url 'products' %}">redmi</a></li>
+            <li><a href="{% url 'products' %}">samsung</a></li>
+            <li><a href="{% url 'products' %}">apple</a></li>
+            <li><a href="{% url 'products' %}">Below 30000</a></li>
+            <li><a href="{% url 'products' %}">Above 50000</a></li>
+            <li><a href="{% url 'products' %}">Show All</a></li>
+        </ul>
+    </div>
+    {% for dt in data %}
+    <div class="card text-center" style="width: 18rem;">
+        <a href="{% url 'product-detail' dt.id %}"><img src="{{dt.images.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">{{dt.product_name|capfirst}}</p>
+          <p class="card-text">Rs. {{dt.MRP}}</p>
+        </div></a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock main-content %}

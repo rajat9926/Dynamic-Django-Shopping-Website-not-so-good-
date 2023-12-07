@@ -1,0 +1,14 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Password Reset{% endblock title %}
+
+{% block main-content %}
+    <form action="" method="post" novalidate class="shadow p-5">
+        {% csrf_token %}
+        {% for items in form %}
+        {{items.label_tag}} {{items}} <small class='text-danger'>{{items.errors|striptags}}</small>
+        {% endfor %}
+        <input type="submit" value="submit" class='btn btn-primary'>
+    </form>
+{% endblock main-content %}
